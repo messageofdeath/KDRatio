@@ -46,17 +46,13 @@ public class KDRatio extends JavaPlugin implements Listener {
 	
 	@EventHandler
 	public void onpre(PlayerCommandPreprocessEvent event) {
-		String[] args = event.getMessage().split(" ");
-		if(args[0].equalsIgnoreCase("kd"))
-		if(event.getPlayer() instanceof Player) {
+		if(event.getMessage().split(" ")[0].equalsIgnoreCase("/dddd")) {
 			Player player = event.getPlayer();
-			if(args.length == 0) {
-				player.sendMessage(ChatColor.GOLD + "Kill / Death Ratio");
-				player.sendMessage(ChatColor.GREEN + "You have "+Backend.getKills(player.getName())+" kills");
-				player.sendMessage(ChatColor.RED + "You have "+Backend.getDeaths(player.getName())+" deaths");
-				double ratio = (double)Backend.getKills(player.getName()) / ((double)Backend.getDeaths(player.getName()) == 0 ? 1:(double)Backend.getDeaths(player.getName()));
-				player.sendMessage(ratio > 2 ? ChatColor.DARK_GREEN + "Your kill/death ratio is "+ratio+". Nice!":ChatColor.DARK_RED+"Your kill/death ratio is "+ratio+". You need to improve.");
-			}
+			player.sendMessage(ChatColor.GOLD + "Kill / Death Ratio");
+			player.sendMessage(ChatColor.GREEN + "You have "+Backend.getKills(player.getName())+" kills");
+			player.sendMessage(ChatColor.RED + "You have "+Backend.getDeaths(player.getName())+" deaths");
+			double ratio = (double)Backend.getKills(player.getName()) / ((double)Backend.getDeaths(player.getName()) == 0 ? 1:(double)Backend.getDeaths(player.getName()));
+			player.sendMessage(ratio > 2 ? ChatColor.DARK_GREEN + "Your kill/death ratio is "+ratio+". Nice!":ChatColor.DARK_RED+"Your kill/death ratio is "+ratio+". You need to improve.");
 		}
 	}
 	
